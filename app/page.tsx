@@ -1,15 +1,22 @@
 "use client";
 
+import dynamic from 'next/dynamic';
+
+// --- GANTI IMPORT BIASA DENGAN DYNAMIC IMPORT ---
+
+// Komponen animasi berat yang sering pakai 'window' wajib di-disable SSR-nya
+const Particles = dynamic(() => import("../components/Particles"), { ssr: false });
+const GooeyNav = dynamic(() => import("@/components/GooeyNav"), { ssr: false });
+const TiltedCard = dynamic(() => import("../components/TiltedCard"), { ssr: false });
+const DecayCard = dynamic(() => import("@/components/DecayCard"), { ssr: false });
+const CurvedLoop = dynamic(() => import("@/components/CurvedLoop"), { ssr: false });
+const ScrollReveal = dynamic(() => import("@/components/ScrollReveal"), { ssr: false });
+const LogoLoop = dynamic(() => import("../components/LogoLoop"), { ssr: false });
+const TextType = dynamic(() => import("../components/TextType"), { ssr: false });
+
+// Komponen statis/ringan biasanya aman, tapi jika masih error, jadikan dynamic juga
 import PixelTrail from "../components/PixelTrail";
-import Particles from "../components/Particles";
-import TextType from "../components/TextType";
 import ScrambledText from "../components/ScrambledText";
-import TiltedCard from "../components/TiltedCard";
-import LogoLoop from "../components/LogoLoop";
-import GooeyNav from "@/components/GooeyNav";
-import CurvedLoop from "@/components/CurvedLoop";
-import DecayCard from "@/components/DecayCard";
-import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   const navItems = [
